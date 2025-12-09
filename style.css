@@ -85,7 +85,8 @@ body {
     letter-spacing: 0.05em;
     color: var(--text-color);
     /* font-style: italic; Removed italics as requested */
-    margin-bottom: 0.5rem;
+    margin-bottom: -0.5rem;
+    /* Reduced by another 0.5rem to negative */
     text-shadow: 0 0 10px rgba(214, 191, 155, 0.3);
 }
 
@@ -213,7 +214,8 @@ body {
     .artist-name {
         font-size: 2.5rem;
         /* Still small on desktop */
-        margin-bottom: 0.5rem;
+        margin-bottom: -0.5rem;
+        /* Reduced gap */
     }
 
     .floating-box {
