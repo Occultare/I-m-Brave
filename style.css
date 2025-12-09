@@ -1,0 +1,233 @@
+@font-face {
+    font-family: 'Havelseen';
+    src: url('Havelseen.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --bg-color: #060906;
+    --accent-color: #d6bf9b;
+    --text-color: #ffffff;
+    --font-artist: 'IM Fell DW Pica', serif;
+    --font-title: 'Havelseen', cursive;
+    --font-ui: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: var(--text-color);
+    font-family: var(--font-ui);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Canvas for Stars */
+#stars-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Noise Overlay */
+.noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAA5OTkAAABMTExERERmZmYzMzMyMjJ4D30DAAAABnRSTlMABQUFBAQGCtjbAAAAPklEQVQ4y2NgwA+YwIQhMZBgYmDIZ2BgzGFg4MxhYBCIY2CQiGNgkIlnYJBJYGCQSWRgkEloYJBJZGCQSWBgAAAbjQyx6l3f4AAAAABJRU5ErkJggg==');
+    /* Simple noise pattern base64 */
+    opacity: 0.05;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Header / Artist Name */
+.artist-name {
+    font-family: var(--font-artist);
+    font-size: 2.2rem;
+    /* Decreased size */
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--text-color);
+    /* font-style: italic; Removed italics as requested */
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px rgba(214, 191, 155, 0.3);
+}
+
+/* Track Title */
+.title-section {
+    margin: 0 0 2rem;
+}
+
+.track-title {
+    font-family: var(--font-title);
+    font-size: 7rem;
+    /* Large on mobile */
+    color: var(--accent-color);
+    text-shadow: 0 0 15px rgba(214, 191, 155, 0.4);
+    line-height: 1.0;
+    font-weight: 400;
+    word-spacing: 0.5rem;
+    /* Havelseen might not need rotation, removing it for now or keeping it if needed. Let's reset transform */
+    transform: none;
+}
+
+.last-letter {
+    font-size: 1.2em;
+    /* 20% larger than parent */
+}
+
+/* Center Piece / Floating Box */
+.center-piece {
+    margin: 1rem 0 2.5rem;
+    perspective: 1000px;
+}
+
+.floating-box {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Listen Buttons */
+.listen-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.listen-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 52px;
+    padding: 0 1.5rem;
+    border: 1px solid rgba(214, 191, 155, 0.3);
+    border-radius: 8px;
+    background: rgba(6, 9, 6, 0.4);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    text-decoration: none;
+    color: #d1b790;
+    /* Updated Color */
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-family: var(--font-ui);
+    position: relative;
+    overflow: hidden;
+}
+
+.listen-btn:hover {
+    background: rgba(214, 191, 155, 0.1);
+    border-color: #d1b790;
+    box-shadow: 0 0 15px rgba(214, 191, 155, 0.2);
+    transform: translateY(-1px);
+}
+
+.listen-btn:active {
+    transform: translateY(1px);
+}
+
+/* Footer Socials */
+.socials {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+    width: 100%;
+}
+
+.socials a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: color 0.3s ease;
+}
+
+.socials a:hover {
+    color: var(--accent-color);
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+    .artist-name {
+        font-size: 2.5rem;
+        /* Still small on desktop */
+        margin-bottom: 0.5rem;
+    }
+
+    .floating-box {
+        max-width: 450px;
+        /* Larger on desktop */
+    }
+
+    .track-title {
+        font-size: 9rem;
+        /* Massive on desktop */
+    }
+
+    .listen-section {
+        max-width: 400px;
+        /* Constrain width on desktop */
+    }
+}
