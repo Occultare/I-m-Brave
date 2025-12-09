@@ -191,8 +191,12 @@ body {
     z-index: 2;
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    padding: 2rem;
+    flex-wrap: wrap;
+    /* Ensure they wrap if screen is very narrow */
+    gap: 0.8rem;
+    /* Tighter gap for mobile */
+    padding: 1.5rem 1rem;
+    /* Comfortable padding */
     width: 100%;
 }
 
@@ -231,5 +235,11 @@ body {
     .listen-section {
         max-width: 400px;
         /* Constrain width on desktop */
+    }
+
+    .socials {
+        gap: 2rem;
+        /* Restore wider gap on desktop */
+        padding: 2rem;
     }
 }
