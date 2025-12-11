@@ -220,24 +220,31 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
+    padding-bottom: 30px;
+    /* Ensure space at the bottom for floating elements */
 }
 
 /* Privacy Link */
 .privacy-link {
-    font-size: 0.7rem;
-    color: rgba(255, 255, 255, 0.5);
+    display: inline-block;
+    font-size: 0.75rem;
+    color: #cccccc;
+    /* Light gray to overwrite default blue */
     text-decoration: none;
-    margin-top: 0.5rem;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
+    text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-family: var(--font-ui);
     transition: color 0.3s ease;
+    opacity: 0.8;
 }
 
 .privacy-link:hover {
     color: var(--accent-color);
+    opacity: 1;
 }
 
 /* Desktop Styles */
